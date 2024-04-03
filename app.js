@@ -1,3 +1,5 @@
+/* This JavaScript code is setting up a simple web application that fetches dad jokes from the
+"https://icanhazdadjoke.com/" API. Here's a breakdown of what the code is doing: */
 console.log('Dad Jokes Starter');
 
 const url = 'https://icanhazdadjoke.com/';
@@ -9,6 +11,7 @@ btn.addEventListener('click', () => {
     fetchDadJoke();
 });
 
+
 const fetchDadJoke = async() =>{
     result.textContent = 'Loading...';
     try {
@@ -18,11 +21,17 @@ const fetchDadJoke = async() =>{
             "User-Agent": "learning app",
           },
         });
+
+
+        if(!response.ok){
+            throw new Error ('There was an error!');
+        }
         const data = await response.json();
+        
         result.textContent = data.joke;
 
     }catch (error) {
-result.textContent = "There was an error..";
+        result.textContent = 'There was an error...';
     };
     
 };
